@@ -1,6 +1,7 @@
 #include "pageContentBase.h"
 
 #include "plotWidget.h"
+#include "procReader.h"
 
 #include <QtWidgets/QBoxLayout>
 #include <QTimer>
@@ -25,9 +26,24 @@ CPageContentPlotting::CPageContentPlotting(QWidget *parent)
 	qobject_cast<QVBoxLayout*>(layout())->addWidget(plot1, 2);
 	qobject_cast<QVBoxLayout*>(layout())->addWidget(plot2, 2);
 
+#ifdef QT_OS_WIN
+	QString LoadAvgName = "../testFiles/proc/loadavg";
+	QString NetStatName = "../testFiles/proc/net/netstat";
+#else
+	QString LoadAvgName = "/proc/loadavg";
+	QString NetStatName = "/proc/net/netstat";
+
+#endif
+
+	CProcReader* proc1 = new CProcReader(LoadAvgName, InterpretScheme::LoadAvg);
+	CProcReader* proc2 = new CProcReader(NetStatName, InterpretScheme::NetStat);
+
+	connect(proc1, SIGNAL(valuesRead(const QList<double>&)), plot1, SLOT(addReading(const QList<double>&)));
+	connect(proc2, SIGNAL(valuesRead(const QList<double>&)), plot2, SLOT(addReading(const QList<double>&)));
+
 	QTimer* t = new QTimer;
 	t->setInterval(500);
-	connect(t, SIGNAL(timeout()), plot1, SLOT(addValue()));
-	connect(t, SIGNAL(timeout()), plot2, SLOT(addValue()));
+	connect(t, SIGNAL(timeout()), proc1, SLOT(update()));
+	connect(t, SIGNAL(timeout()), proc2, SLOT(update()));
 	t->start();
 }

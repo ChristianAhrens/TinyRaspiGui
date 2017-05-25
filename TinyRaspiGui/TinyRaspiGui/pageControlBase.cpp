@@ -12,13 +12,13 @@ APageControlBase::APageControlBase(QWidget *parent)
 	setLayout(m_layout);
 
 	SetButton(0, new QPushButton);
-	//SetButtonIcon(0, )
+	SetButtonIcon(0, this->style()->standardIcon(QStyle::SP_MediaSeekForward));
 	SetButton(1, new QPushButton);
-	//SetButtonIcon(1, )
+	SetButtonIcon(1, this->style()->standardIcon(QStyle::SP_MediaPlay));
 	SetButton(2, new QPushButton);
-	//SetButtonIcon(2, )
+	SetButtonIcon(2, this->style()->standardIcon(QStyle::SP_MediaStop));
 	SetButton(3, new QPushButton);
-	//SetButtonIcon(3, )
+	SetButtonIcon(3, this->style()->standardIcon(QStyle::SP_MediaPause));
 }
 
 bool APageControlBase::SetButtonText(int index, const QString& text)

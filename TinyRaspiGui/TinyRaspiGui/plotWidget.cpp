@@ -13,7 +13,7 @@ CPlotWidget::CPlotWidget(QWidget *parent)
 	m_boldCenterline = false;
 }
 
-void CPlotWidget::addValue(int value)
+void CPlotWidget::addReading(const QList<double>& value)
 {
 	m_plotValues.push_back(value);
 
@@ -68,8 +68,11 @@ void CPlotWidget::paintEvent(QPaintEvent* e)
 		if (m_plotValues.size() >= i)
 		{
 			int px = r.right() - i;
-			int py = r.top() + double(m_plotValues[m_plotValues.size() - i]) / double(m_plotMax - m_plotMin)*double(r.height());
-			points.push_back(QPoint(px, py));
+			foreach(double sample, m_plotValues[m_plotValues.size() - i])
+			{
+				int py = r.bottom() - sample / double(m_plotMax - m_plotMin)*double(r.height());
+				points.push_back(QPoint(px, py));
+			}
 		}
 	}
 	painter.setPen(QPen(palette().brush(QPalette::ColorRole::Text), 3, Qt::SolidLine));
