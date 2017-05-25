@@ -7,6 +7,8 @@
 APageControlBase::APageControlBase(QWidget *parent)
 {
 	m_layout = new QVBoxLayout;
+	m_layout->setContentsMargins(2, 2, 2, 2);
+	m_layout->setSpacing(2);
 	setLayout(m_layout);
 
 	SetButton(0, new QPushButton);
