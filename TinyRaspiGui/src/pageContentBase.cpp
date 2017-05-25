@@ -8,6 +8,7 @@
 
 
 APageContentBase::APageContentBase(QWidget *parent)
+    : QWidget(parent)
 {
 	m_layout = new QVBoxLayout;
 	m_layout->setContentsMargins(4, 4, 4, 4);

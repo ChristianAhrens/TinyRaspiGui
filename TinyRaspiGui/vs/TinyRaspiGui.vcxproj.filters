@@ -40,26 +40,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TinyRaspiGui.cpp">
+    <ClCompile Include="..\src\pageContentBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TinyRaspiGui.cpp">
-      <Filter>Generated Files\Debug</Filter>
+    <ClCompile Include="..\src\pageControlBase.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TinyRaspiGui.cpp">
-      <Filter>Generated Files\Release</Filter>
+    <ClCompile Include="..\src\plotWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\procReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TinyRaspiGui.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_TinyRaspiGui.cpp">
       <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="pageContentBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="pageControlBase.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_pageContentBase.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -79,45 +79,37 @@
     <ClCompile Include="GeneratedFiles\Release\moc_plotWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="plotWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_procReader.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_procReader.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="procReader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TinyRaspiGui.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TinyRaspiGui.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="TinyRaspiGui.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="TinyRaspiGui.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="TinyRaspiGui.qrc">
+    <CustomBuild Include="..\src\TinyRaspiGui.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="pageContentBase.h">
+    <CustomBuild Include="..\include\pageContentBase.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="pageControlBase.h">
+    <CustomBuild Include="..\include\pageControlBase.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="plotWidget.h">
+    <CustomBuild Include="..\include\plotWidget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="procReader.h">
+    <CustomBuild Include="..\include\procReader.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_TinyRaspiGui.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
+    <CustomBuild Include="..\include\TinyRaspiGui.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

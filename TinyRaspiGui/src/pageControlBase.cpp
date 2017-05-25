@@ -1,10 +1,12 @@
 #include "pageControlBase.h"
 
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QBoxLayout>
+#include <QPushButton>
+#include <QBoxLayout>
+#include <QStyle>
 
 
 APageControlBase::APageControlBase(QWidget *parent)
+    : QWidget(parent)
 {
 	m_layout = new QVBoxLayout;
 	m_layout->setContentsMargins(2, 2, 2, 2);

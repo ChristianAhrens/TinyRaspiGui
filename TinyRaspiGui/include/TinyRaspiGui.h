@@ -4,7 +4,6 @@
 #define TINYRASPIGUI_H
 
 #include <QtWidgets/QWidget>
-#include "ui_TinyRaspiGui.h"
 
 class QHBoxLayout;
 
@@ -17,8 +16,6 @@ public:
 
 private:
 	void customizeStyle();
-
-	Ui::TinyRaspiGuiClass ui;
 
 	QHBoxLayout*	m_layout;
 };

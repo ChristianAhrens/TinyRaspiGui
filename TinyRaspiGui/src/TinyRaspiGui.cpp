@@ -3,14 +3,13 @@
 #include "pageContentBase.h"
 #include "pageControlBase.h"
 
-#include <qstylefactory.h>
-#include <QtWidgets/QBoxLayout>
+#include <QApplication>
+#include <QStyleFactory>
+#include <QBoxLayout>
 
 TinyRaspiGui::TinyRaspiGui(QWidget *parent)
 	: QWidget(parent)
 {
-	ui.setupUi(this);
-
 	qApp->setStyle(QStyleFactory::create("fusion"));
 
 	customizeStyle();

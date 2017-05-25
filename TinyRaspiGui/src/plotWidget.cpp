@@ -5,6 +5,7 @@
 
 
 CPlotWidget::CPlotWidget(QWidget *parent)
+    : QWidget(parent)
 {
 	m_plotWidth = 0;
 	m_plotMax = 100;

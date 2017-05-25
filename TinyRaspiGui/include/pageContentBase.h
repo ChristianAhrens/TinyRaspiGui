@@ -4,7 +4,6 @@
 #define PAGECONTENTBASE_H
 
 #include <QtWidgets/QWidget>
-#include "ui_TinyRaspiGui.h"
 
 class QVBoxLayout;
 
