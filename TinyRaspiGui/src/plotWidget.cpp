@@ -8,7 +8,7 @@ CPlotWidget::CPlotWidget(QWidget *parent)
     : QWidget(parent)
 {
 	m_plotWidth = 0;
-	m_plotMax = 100;
+    m_plotMax = 1;
 	m_plotMin = 0;
 	m_showGrid = true;
 	m_boldCenterline = false;
@@ -24,12 +24,12 @@ void CPlotWidget::addReading(const QList<double>& value)
 	update();
 }
 
-void CPlotWidget::SetMax(int max)
+void CPlotWidget::SetMax(double max)
 {
 	m_plotMax = max;
 }
 
-void CPlotWidget::SetMin(int min)
+void CPlotWidget::SetMin(double min)
 {
 	m_plotMin = min;
 }
@@ -68,16 +68,17 @@ void CPlotWidget::paintEvent(QPaintEvent* e)
 	{
 		if (m_plotValues.size() >= i)
 		{
-			int px = r.right() - i;
+            double px = r.right() - i;
 			foreach(double sample, m_plotValues[m_plotValues.size() - i])
 			{
-				int py = r.bottom() - sample / double(m_plotMax - m_plotMin)*double(r.height());
-				points.push_back(QPoint(px, py));
+                double py = double(r.bottom()) - sample / (m_plotMax - m_plotMin)*double(r.height());
+                if (points.size() && points.back().y()!=py)
+                    points.push_back(QPoint(px, py));
 			}
 		}
 	}
-	painter.setPen(QPen(palette().brush(QPalette::ColorRole::Text), 3, Qt::SolidLine));
-	painter.drawPoints(points);
+    painter.setPen(QPen(palette().brush(QPalette::ColorRole::Text), 1, Qt::SolidLine));
+    painter.drawPoints(points);
 }
 
 void CPlotWidget::resizeEvent(QResizeEvent* e)
