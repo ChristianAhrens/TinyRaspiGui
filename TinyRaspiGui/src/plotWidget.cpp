@@ -16,7 +16,10 @@ CPlotWidget::CPlotWidget(QWidget *parent)
 
 void CPlotWidget::addReading(const QList<double>& value)
 {
-	m_plotValues.push_back(value);
+	if (m_plotValues.isEmpty() || m_plotValues.back() != value)
+		m_plotValues.push_back(value);
+	else
+		m_plotValues.replace(m_plotValues.size() - 1, value);
 
 	while (m_plotValues.size() > m_plotWidth)
 		m_plotValues.pop_front();
@@ -68,17 +71,40 @@ void CPlotWidget::paintEvent(QPaintEvent* e)
 	{
 		if (m_plotValues.size() >= i)
 		{
+			int valueIndex = m_plotValues.size() - i;
+
+			Q_ASSERT(m_plotValues.front().size() == m_plotValues[valueIndex].size());
+
             double px = r.right() - i;
-			foreach(double sample, m_plotValues[m_plotValues.size() - i])
+			for (int curveIndex = 0; curveIndex<m_plotValues[valueIndex].size(); ++curveIndex)
 			{
+				double sample = m_plotValues[valueIndex][curveIndex];
+
+				if (sample > m_plotMax)
+					m_plotMax = sample;
+				if (sample < m_plotMin)
+					m_plotMin = sample;
+
                 double py = double(r.bottom()) - sample / (m_plotMax - m_plotMin)*double(r.height());
-                if (points.size() && points.back().y()!=py)
-                    points.push_back(QPoint(px, py));
+				if (points.size() && points.back().y() != py)
+					points.push_back(QPoint(px, py));
+
+				int valueIndex_next = valueIndex + 1;
+				double sample_next = valueIndex_next < m_plotValues.size() ? m_plotValues[valueIndex_next][curveIndex] : m_plotValues[valueIndex][curveIndex];
+
+				if (sample_next > m_plotMax)
+					m_plotMax = sample_next;
+				if (sample_next < m_plotMin)
+					m_plotMin = sample_next;
+
+				double py_next = double(r.bottom()) - sample_next / (m_plotMax - m_plotMin)*double(r.height());
+				if (points.size() && points.back().y() != py_next)
+					points.push_back(QPoint(px + 1, py_next));
 			}
 		}
 	}
     painter.setPen(QPen(palette().brush(QPalette::ColorRole::Text), 1, Qt::SolidLine));
-    painter.drawPoints(points);
+    painter.drawLines(points);
 }
 
 void CPlotWidget::resizeEvent(QResizeEvent* e)
