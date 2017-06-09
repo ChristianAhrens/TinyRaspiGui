@@ -35,5 +35,6 @@ public:
 private:
 	QString			m_procFileName;
 	InterpretScheme m_interpretScheme;
+	int				m_updateCount;
 };
 #endif //PROCREADER_H
