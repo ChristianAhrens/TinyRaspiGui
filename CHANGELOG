@@ -1,0 +1,15 @@
+2017-04-23  Christian Ahrens  <christianahrens@me.com>
+
+    * CHANGELOG.txt (-no code-): Changelog added
+    only with example content
+
+
+YYYY-MM-DD  John Doe  <johndoe@example.com>
+
+    * myfile.ext (myfunction): my changes made
+    additional changes
+
+    * myfile.ext (unrelated_change): my changes made
+    to myfile.ext but completely unrelated to the above
+
+    * anotherfile.ext (somefunction): more changes
