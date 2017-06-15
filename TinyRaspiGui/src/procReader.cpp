@@ -1,5 +1,7 @@
 #include "procReader.h"
 
+#include "math.h"
+
 #include <QFile>
 #include <QDir>
 #include <QTextStream>
