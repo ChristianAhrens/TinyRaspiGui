@@ -30,7 +30,7 @@ bool CProcReader::SetProcScheme(InterpretScheme scheme)
 
 void CProcReader::update()
 {
-	InterpretScheme derivedInterpretation = InterpretScheme::Invalid;
+    InterpretScheme derivedInterpretation = Invalid;
 	QByteArray contents;
 	QFile file(m_procFileName);
 	if (!file.open(QIODevice::ReadOnly)) {

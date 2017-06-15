@@ -47,7 +47,7 @@ void CPlotWidget::paintEvent(QPaintEvent* e)
 	QVector<QPoint> points;
 	
 	points = QVector<QPoint>() << r.topLeft() << r.topRight() << r.topRight() << r.bottomRight() << r.bottomRight() << r.bottomLeft() << r.bottomLeft() << r.topLeft();
-	painter.setBrush(palette().brush(QPalette::ColorRole::Base));
+    painter.setBrush(palette().brush(QPalette::Base));
 	painter.drawLines(points);
 
 	if (m_showGrid)
@@ -56,13 +56,13 @@ void CPlotWidget::paintEvent(QPaintEvent* e)
 		points << QPoint(r.left(), r.top() + r.height()*0.5) << QPoint(r.right(), r.top() + r.height()*0.5);
 		if (m_boldCenterline)
 		{
-			painter.setPen(QPen(palette().brush(QPalette::ColorRole::ToolTipText), 2, Qt::DashDotLine));
+            painter.setPen(QPen(palette().brush(QPalette::ToolTipText), 2, Qt::DashDotLine));
 			painter.drawLines(points);
 			points.clear();
 		}
 		points << QPoint(r.left(), r.top() + r.height()*0.25) << QPoint(r.right(), r.top() + r.height()*0.25)
 				<< QPoint(r.left(), r.top() + r.height()*0.75) << QPoint(r.right(), r.top() + r.height()*0.75);
-		painter.setPen(QPen(palette().brush(QPalette::ColorRole::ToolTipText), 1, Qt::DashDotDotLine));
+        painter.setPen(QPen(palette().brush(QPalette::ToolTipText), 1, Qt::DashDotDotLine));
 		painter.drawLines(points);
 	}
 
@@ -103,7 +103,7 @@ void CPlotWidget::paintEvent(QPaintEvent* e)
 			}
 		}
 	}
-    painter.setPen(QPen(palette().brush(QPalette::ColorRole::Text), 1, Qt::SolidLine));
+    painter.setPen(QPen(palette().brush(QPalette::Text), 1, Qt::SolidLine));
     painter.drawLines(points);
 }
 

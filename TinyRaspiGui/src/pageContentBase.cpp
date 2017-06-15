@@ -36,8 +36,8 @@ CPageContentPlotting::CPageContentPlotting(QWidget *parent)
 
 #endif
 
-	CProcReader* proc1 = new CProcReader(LoadAvgName, InterpretScheme::LoadAvg);
-	CProcReader* proc2 = new CProcReader(NetStatName, InterpretScheme::NetStat);
+    CProcReader* proc1 = new CProcReader(LoadAvgName, LoadAvg);
+    CProcReader* proc2 = new CProcReader(NetStatName, NetStat);
 
 	connect(proc1, SIGNAL(valuesRead(const QList<double>&)), plot1, SLOT(addReading(const QList<double>&)));
 	connect(proc2, SIGNAL(valuesRead(const QList<double>&)), plot2, SLOT(addReading(const QList<double>&)));
